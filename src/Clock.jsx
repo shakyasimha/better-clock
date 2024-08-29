@@ -1,52 +1,57 @@
 import { useState, useEffect } from 'react';
 
-function Clock() {
-    const [hour, setHour] = useState(0);
-    const [minute, setMinute] = useState(0);
-    const [second, setSecond] = useState(0);
+function ClockDisplay({ hour, minute, second }) {
+    return (
+        <div className="clock">
+            <p> {String(hour).padStart(2, '0')} </p>
+            <p> : </p>
+            <p> {String(minute).padStart(2, '0')} </p>
+            <p> : </p>
+            <p> {String(second).padStart(2, '0')} </p>
+        </div>
+    )
+}
 
-    let [hourDisplay, minuteDisplay, secondDisplay] = [0,0,0];
+function Clock() {
+    let now = new Date();
+
+    const [hour, setHour] = useState(now.getHours());
+    const [minute, setMinute] = useState(now.getMinutes());
+    const [second, setSecond] = useState(now.getSeconds());
+
+    // let [hourDisplay, minuteDisplay, secondDisplay] = [0,0,0];
+    // const setCurrentTime = () => {
+    //     setHour(now.getHours());
+    //     setMinute(now.getMinutes());
+    //     setSecond(now.getSeconds());
+    // }
 
     // setInterval function goes here
-    let timer = setInterval(
-        () => {
-            if(second < 60) {
-                setSecond(second+1);
-            }
-            else {
+    useEffect(() => {
+        let interval = setInterval(() => {
+            setSecond(second+1);
+
+            if(second == 59) {
                 setSecond(0);
                 setMinute(minute+1);
             }
 
-            if(minute == 60) {
+            if(minute == 59) {
                 setMinute(0);
                 setHour(hour+1);
             }
 
             if(hour == 24) {
-                setSecond(0);
-                setMinute(0);
-                setHour(0);
-
-                clearInterval(timer);
+                clearInterval(interval);
             }
+        }, 1000);
 
-            minuteDisplay = String(minute).padStart(2, '0');
-            secondDisplay = String(second).padStart(2, '0');
-            hourDisplay = String(hour).padStart(2, '0');
-        },
-        1000
-    );
+        return () => clearInterval(interval);
+    }, [second, minute, hour]);
 
     return (
         <>
-            <div className="clock">
-                <p> {hourDisplay} </p>
-                <p> : </p>
-                <p> {minuteDisplay} </p>
-                <p> : </p>
-                <p> {secondDisplay} </p>
-            </div>
+            <ClockDisplay hour={hour} minute={minute} second={second} />
         </>
     )
 }
