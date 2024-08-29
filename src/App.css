@@ -46,3 +46,22 @@
   justify-content: center; 
   align-items: center; 
 }
+
+.counter {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-type-1 {
+  margin: 10px;
+  padding: 12px; 
+  border-radius: 10px;
+}
