@@ -1,9 +1,13 @@
 import './App.css';
 import Clock from './Clock';
+import Date from './Date';
 
 function App() {
     return (
-      <Clock />
+      <>  
+        <Date />
+        <Clock />
+      </>
     )
 }
 

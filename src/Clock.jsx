@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+
+// Clock display
 function ClockDisplay({ hour, minute, second }) {
     return (
         <div className="clock">
