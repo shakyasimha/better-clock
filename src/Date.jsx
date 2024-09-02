@@ -16,6 +16,21 @@ function Date() {
         11: "December"
     }
 
+    const months = {
+        'Jan':"January", 
+        "Feb": "February",
+        "Mar": "March",
+        "Apr": "April",
+        "May": "May",
+        "Jun": "June",
+        "Jul": "July",
+        "Aug": "August",
+        "Sept": "September",
+        "Oct": "October",
+        "Nov": "November",
+        "Dec": "December"
+    }
+
     const dayDict = {
         0: "Sunday",
         1: "Monday",
@@ -26,8 +41,20 @@ function Date() {
         6: "Saturday"
     }
 
-    const dateTime = new Date();
+    const days = = {
+        "Sun": "Sunday",
+        "Mon": "Monday",
+        "Tue": "Tuesday",
+        "Wed": "Wednesday",
+        "Thu": "Thursday",
+        "Fri": "Friday",
+        "Sat": "Saturday"
+    }
     
+    const dateRegex = /(\w{3})\s(\w{3})\s(\d{2})\s(\d{4}).*/
+    const dateTime = new Date();
+
+
 
     const fullDate = $`{day}, {date} {month} {year}`
     return (
