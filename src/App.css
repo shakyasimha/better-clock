@@ -70,3 +70,12 @@
   padding: 12px; 
   border-radius: 10px;
 }
+
+.date {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4em;
+}

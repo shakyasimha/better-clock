@@ -21,35 +21,17 @@ function Clock() {
     const [minute, setMinute] = useState(now.getMinutes());
     const [second, setSecond] = useState(now.getSeconds());
 
-    // let [hourDisplay, minuteDisplay, secondDisplay] = [0,0,0];
-    // const setCurrentTime = () => {
-    //     setHour(now.getHours());
-    //     setMinute(now.getMinutes());
-    //     setSecond(now.getSeconds());
-    // }
-
     // setInterval function goes here
     useEffect(() => {
         let interval = setInterval(() => {
-            setSecond(second+1);
-
-            if(second == 59) {
-                setSecond(0);
-                setMinute(minute+1);
-            }
-
-            if(minute == 59) {
-                setMinute(0);
-                setHour(hour+1);
-            }
-
-            if(hour == 24) {
-                clearInterval(interval);
-            }
+            let now = new Date();
+            setHour(now.getHours());
+            setMinute(now.getMinutes());
+            setSecond(now.getSeconds());
         }, 1000);
 
         return () => clearInterval(interval);
-    }, [second, minute, hour]);
+    }, []);
 
     return (
         <>
