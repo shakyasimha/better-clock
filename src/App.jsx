@@ -1,11 +1,11 @@
 import './App.css';
 import Clock from './Clock';
-import Date from './Date';
+import VerticalClock from './VerticalClock';
 
 function App() {
     return (
       <>  
-        <Date />
+        <VerticalClock />
       </>
     )
 }
